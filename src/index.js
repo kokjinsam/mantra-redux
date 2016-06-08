@@ -15,18 +15,35 @@ function reduxMiddleware(options) {
           throw new Error(message);
         }
 
-        const allReducers = {
+        let allReducers = {
           ...module.reducers,
           ...reducers,
         };
 
-        this._reducers = allReducers;
+        let allMiddlewares = [ ...middlewares ];
+
+        if (this._apolloReducer) {
+          allReducers = {
+            ...allReducers,
+            apollo: this._apolloReducer,
+          };
+        }
+
+        if (this._apolloMiddleware) {
+          allMiddlewares = [
+            ...allMiddlewares,
+            this._apolloMiddleware,
+          ];
+        }
+
+        this._reduxReducers = allReducers;
+        this._reduxMiddlewares = allMiddlewares;
       }
     },
     moduleWillInit() {
       const reduxStore = createReduxStore({
-        reducers: this._reducers,
-        middlewares,
+        reducers: this._reduxReducers,
+        middlewares: this._reduxMiddlewares,
       });
 
       this.context[storeName] = reduxStore;
