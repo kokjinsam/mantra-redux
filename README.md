@@ -1,5 +1,11 @@
 # Mantra Redux Middleware
 
+## Installation
+
+```
+npm install --save mantra-redux mantra-plus
+```
+
 ## Basic Usage
 
 ```

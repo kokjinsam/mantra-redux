@@ -1,5 +1,5 @@
 {
-  "name": "npm-base",
+  "name": "mantra-redux",
   "version": "1.0.0",
   "description": "Redux middleware for Mantra",
   "repository": {
