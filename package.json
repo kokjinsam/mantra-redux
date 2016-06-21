@@ -1,6 +1,6 @@
 {
   "name": "mantra-redux",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Redux middleware for Mantra",
   "repository": {
     "type": "git",

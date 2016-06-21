@@ -15,17 +15,16 @@ function reduxMiddleware(options) {
           throw new Error(message);
         }
 
-        const allReducers = {
+        this._reduxReducers = {
+          ...this._reduxReducers,
           ...module.reducers,
           ...reducers,
         };
-
-        this._reduxReducers = allReducers;
       }
     },
     moduleWillInit() {
       let allReducers = this._reduxReducers;
-      let allMiddlewares = [...middlewares];
+      let allMiddlewares = [ ...middlewares ];
 
       if (this._apolloReducer) {
         allReducers = {
