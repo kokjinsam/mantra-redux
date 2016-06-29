@@ -2,6 +2,7 @@ import {
   createStore,
   combineReducers,
   applyMiddleware,
+  compose,
 } from 'redux';
 
 function createReduxStore(options) {
@@ -19,7 +20,10 @@ function createReduxStore(options) {
     const combinedReducers = combineReducers(reducers);
     const Store = createStore(
       combinedReducers,
-      applyMiddleware(...middlewares)
+      compose(
+        applyMiddleware(...middlewares),
+        window.devToolsExtension ? window.devToolsExtension() : undefined,
+      )
     );
 
     return Store;
