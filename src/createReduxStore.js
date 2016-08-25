@@ -22,7 +22,7 @@ function createReduxStore(options) {
       combinedReducers,
       compose(
         applyMiddleware(...middlewares),
-        window.devToolsExtension ? window.devToolsExtension() : undefined,
+        window.devToolsExtension ? window.devToolsExtension() : f => f,
       )
     );
 
